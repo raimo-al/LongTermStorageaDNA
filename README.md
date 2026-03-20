@@ -6,8 +6,8 @@ Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.
 
 LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
-
-
+Requirements:
+- For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
 
 
 
