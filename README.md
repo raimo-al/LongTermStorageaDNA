@@ -9,7 +9,7 @@ LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
 # Installation and pipeline
 
-# Requirements:
+# Requirements :
 - For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
 
 Step 1 (= Step1.sh): Adapter trimming with Cutadapt
