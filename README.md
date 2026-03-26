@@ -6,15 +6,34 @@ Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.
 
 LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
+
+Installation and pipeline
+
 Requirements:
 - For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
+
+Step 1 (= Step1.sh): Adapter trimming with Cutadapt
+Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
+
+Step2 (= Step2.sh): Aligning the samples to the reference genome with bwa
+bwa: (https://github.com/lh3/bwa; arXiv:1303.3997)
+
+Step31 - Steo34 (Step31.sh, Step32.sh, Step31.sh and Step34.sh)
+SAMtools: (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
+
+Step31.sh: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
+Step32.sh: sorts the *.bam" files into *"_sorted.bam" files.
+Step33.sh: sorts the *"_sorted.bam" files into *"_rmdup.bam" files
+Step34: Generates summary statistics using samtools flagstat
 
 
 
 Additional references include:
 
-Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
+Martin, M. (2011). Cutadapt removes adapter sequences from high-throughput sequencing reads. EMBnet. journal, 17(1), 10-12.
 
-bwa: (https://github.com/lh3/bwa; arXiv:1303.3997)
+bwa Li, H., & Durbin, R. (2009). Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics , 25(14), 1754–1760. https://doi.org/10.1093/bioinformatics/btp324. Download: http://bio-bwa.sourceforge.net/bwa.shtml
 
-SAMtools: (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
+SAMtools Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., … 1000 Genome Project Data Processing Subgroup. (2009). The Sequence Alignment/Map format and SAMtools. Bioinformatics , 25(16), 2078–2079. https://doi.org/10.1093/bioinformatics/btp352. Download: http://www.htslib.org/
+
+Fernandes, DM, Cheronet, O, Gelabert, P, Pinhasi, R. TKGWV2: an ancient DNA relatedness pipeline for ultra-low coverage whole genome shotgun data. Sci Rep 11, 21262 (2021). https://doi.org/10.1038/s41598-021-00581-3
