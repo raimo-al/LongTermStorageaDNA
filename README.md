@@ -1,4 +1,10 @@
 # LongTermStorageaDNA-Scripts
+
+Installation and pipeline:
+
+wget https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/sandbox-install/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
+
+
 Set of scripts and customized code, which were used to analyse the ancient human genomic data from the "The effect of long-term storage on ancient DNA samples" project (master thesis). 
 Available at https://utheses.univie.ac.at/detail/74668 . 
 
