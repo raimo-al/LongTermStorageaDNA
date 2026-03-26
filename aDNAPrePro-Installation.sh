@@ -49,7 +49,8 @@ echo "Download complete."
 unzip -q "$WorkDir/aDNAPrePro.zip" -d "$WorkDir"
 
 # Detect extracted folder
-ExtractedDir=$(find "$WorkDir" -maxdepth 1 -type d -name "aDNAPrePro-*")
+//ExtractedDir=$(find "$WorkDir" -maxdepth 1 -type d -name "aDNAPrePro-*")
+ExtractedDir=$(find "$WorkDir" -maxdepth 1 -type d -name "LongTermStorageaDNA-*" | head -n 1)
 
 # Copy scripts into Scripts directory
 ScriptDir=$(find "$ExtractedDir" -type d -name "*aDNAPrePro*" | head -n 1)
