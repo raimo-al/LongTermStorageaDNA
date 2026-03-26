@@ -4,13 +4,13 @@ A bioinformatics pipeline for the analysis of human ancient DNA (aDNA) samples.
 This pipeline contains a set of scripts and customized code, which were originally developed for the analysis of ancient human genomic data generated for the project "The effect of long-term storage on ancient DNA samples" project (Master' thesis). 
 Available at https://utheses.univie.ac.at/detail/74668 .
 
-**aDNAPrePro**
+## aDNAPrePro
 
 The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 
-Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.
+**Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.**
 
 LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
@@ -20,24 +20,24 @@ LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 # Requirements :
 - For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
 
-Step 1 (= Step1.sh): Adapter trimming with Cutadapt
+**Step 1 (= Step1.sh)**: Adapter trimming with Cutadapt
 Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
 
-Step2 (= Step2.sh): Aligning the samples to the reference genome with bwa
+**Step2 (= Step2.sh)**: Aligning the samples to the reference genome with bwa
 bwa: (https://github.com/lh3/bwa; arXiv:1303.3997)
 
-Step31 - Step34 (Step31.sh, Step32.sh, Step31.sh and Step34.sh)
+**Step31 - Step34 (Step31.sh, Step32.sh, Step31.sh and Step34.sh):**
 SAMtools: (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 
-Step31.sh: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
+**Step31.sh**: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
 
-Step32.sh: sorts the *.bam" files into *"_sorted.bam" files.
+**Step32.sh**: sorts the *.bam" files into *"_sorted.bam" files.
 
-Step33.sh: sorts the *"_sorted.bam" files into *"_rmdup.bam" files
+**Step33.sh**: sorts the *"_sorted.bam" files into *"_rmdup.bam" files
 
-Step34: Generates summary statistics using samtools flagstat
+**Step34.sh**: Generates summary statistics using samtools flagstat
 
-Step4CreateReport.sh creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+**Step4CreateReport.sh** creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
 # Additional references include:
 
