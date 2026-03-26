@@ -4,25 +4,25 @@
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step4CreateReport.sh this is the seventh of seven scripts to preprocess ancient DNA.
+# Step4CreateReport.sh this is the nineth of nine scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
-##
-# Usage:
-# First time using the script
-# chmod 754 Step4CreateReport.sh
 
+## Step4CreateReport.sh creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+
+# Usage:
 #   ./Step4CreateReport.sh -s {1|2|a} [-sep {c|s}]
 #
 #   -s 1   ? Endogenous & Unique report
 #   -s 2   ? Reads & Trimmed report
-#   -s a   ? both reports
+#   -s a   ? both
 #
 #   -sep c ? comma separated; numbers with decimal dot
 #   -sep s ? semicolon separated; numbers with decimal comma (default as in Europe)
 # ------------------------------------------------------------
-
+# First time launching:
+# chmod 754 Step4CreateReport.sh
 
 echo "Start: $(date '+%H:%M')"
 TestHOME="$HOME/TestGithub"

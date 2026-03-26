@@ -2,9 +2,9 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Version: 1.0
-# Date: Feb 2026
-# Step32.sh this is the fourth of seven scripts to preprocess ancient DNA samples.
+# Version: 1.1
+# Date: Mar 2026
+# Step32.sh this is the sixth of nine scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
@@ -32,11 +32,11 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
+#ScratchDir="/path/to/your/scratchdirectory/"
 TestHOME="$HOME/TestGithub"
-# insert here your ScratchDir 
-ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
-# Load SAMtools on your cluster environment; this is how to load SAMtools on the LiSC Server
+# Load SAMtools on your cluster environment
 module load SAMtools/1.23-GCC-14.2.0
 
 cd "$ScratchDir"

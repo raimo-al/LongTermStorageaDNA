@@ -2,15 +2,14 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Version: 1.0
-# Date: Feb 2026
-# Step31.sh this is the third of seven scripts to preprocess ancient DNA samples.
+# Version: 1.1
+# Date: Mar 2026
+# Step31.sh this is the fifth of nine scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
 ## Step31: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
-# By using the Software Samtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 ##
 # Usage:
 # First time using the script
@@ -33,9 +32,9 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
+#ScratchDir="/path/to/your/scratchdirectory/"
 TestHOME="$HOME/TestGithub"
-# insert here your ScratchDir 
-ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
 # Load SAMtools on your HPC enviorment; this is how to load SAMtools on the LiSC Server
 # check if your SAMtools system current version is correct.
@@ -44,7 +43,7 @@ module load SAMtools/1.23-GCC-14.2.0
 cd "$ScratchDir"
 
 ##Step3d: the output directory hosting your *.bam files
-mkdir -p Step3d ## create Step3d if it does not exist
+mkdir -p Step3d ## create Step3d if it doesn´t exists
 
 for filename in ./Step2d/*.sam; do
    sample="${filename:9:6}"

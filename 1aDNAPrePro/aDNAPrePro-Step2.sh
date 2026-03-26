@@ -2,9 +2,9 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Version: 1.0
-# Date: Feb 2026
-# Step2.sh this is the second of seven scripts to preprocess ancient DNA samples.
+# Version: 1.1
+# Date: Mar 2026
+# Step2.sh this is the fourth of nine scripts to preprocess ancient DNA.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
@@ -34,12 +34,13 @@
 echo "Start: $(date '+%H:%M')"
 
 #Set the path for your reference genome: ref="/path/to/your/ReferenceGenome.fasta" ; in this script following Reference Genome was used: hg37: human_g1k_v37.fasta
-ref ="???"
+ref="/lisc/data/scratch/anthropology/Pinhasi_group/raimo/human_g1k_v37.fasta"
+# ref ="???"
 
 #$HOME is always the /path/to/your/homedirectory/
+#ScratchDir="/path/to/your/scratchdirectory/"
 TestHOME="$HOME/TestGithub"
-# insert here your ScratchDir 
-ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
 # Load bwa on your HPC enviorment
 #This is how to load bwa on the LiSC Server
@@ -47,7 +48,7 @@ module load BWA/0.7.19-GCCcore-13.3.0
 
 cd "$ScratchDir"
 ##Step2d: the output directory hosting your alignment results: *sam and *.sam.log
-mkdir -p Step2d ## create Step2d if it does not exist
+mkdir -p Step2d ## create Step2d if it doesn´t exists
 
 for filename in ./Step1d/*.fastq; do
    sample="${filename:9:6}"

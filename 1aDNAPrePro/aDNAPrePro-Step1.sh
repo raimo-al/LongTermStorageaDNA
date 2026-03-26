@@ -2,9 +2,9 @@
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
-# Version: 1.0
-# Date: Feb 2026
-# Step1.sh this is the first of seven scripts to preprocess ancient DNA samples.
+# Version: 1.1
+# Date: Mar 2026
+# Step1.sh this is the third of nine scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
@@ -33,20 +33,20 @@
 
 echo "Start: $(date '+%H:%M')"
 
-#$HOME is always the /path/to/your/homedirectory/
-TestHOME="$HOME/TestGithub"
-# insert here your ScratchDir 
-ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+# $HOME is always the /path/to/your/homedirectory/
+WorkDir="$HOME/aDNAPrePro"
+# ScratchDir="/path/to/your/scratchdirectory/"
+ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
 
-#Cutadaptlog: the directory hosting cutadapt log files: Ensure Cutadaptlogs exist
-mkdir -p Cutadaptlogs ## create Cutadaptlogs if it doesn t exists
+#Cutadaptlogs: the directory hosting cutadapt log files: Ensure Cutadaptlogs exist
+mkdir -p Cutadaptlogs ## create Cutadaptlogs if it doesn´t exists
 
 cd "$ScratchDir"
 
 ## Step0d: the directory hosting your fastq.gz files
-mkdir -p Step0d ## create Step0d if it does not exist
-mkdir -p Step1d ## create Step1d if it does not exist
+mkdir -p Step0d ## create Step0d if it doesn´t exists
+mkdir -p Step1d ## create Step1d if it doesn´t exists
 
 # Load cutadapt on your HPC enviorment
 module load cutadapt
