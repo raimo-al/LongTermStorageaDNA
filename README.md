@@ -14,6 +14,8 @@ LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
 # Installation and pipeline
 
+Please make sure that all shell scripts have permissions and are executable. First please launch from your shell:
+
 ```bash
 wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
 ```
