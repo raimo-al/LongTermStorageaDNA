@@ -14,12 +14,6 @@ set -e
 
 # aDNAPrePro-Install.sh: Installation script to run the aDNAPrePro pipeline.
 ##
-# Usage:
-# Two possibilities to make the installation script executable:
-#1: After downloading the repository from GitHub, run the installation script with:
-#     bash aDNAPrePro-Install.sh
-#####2: Alternatively, after downloading the repository from GitHub, make the script executable and run it directly:
-# chmod 754 aDNAPrePro-Install.sh
 # ------------------------------------------------------------
 
 echo "Installing aDNAPrePro..."

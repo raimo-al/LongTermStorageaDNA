@@ -14,13 +14,13 @@
 ##
 # Usage: 
 ##
-# First time launching:
-# chmod 754 Step1.sh
+# If you did not download the scripts with wget, you need to make the script executable by launching the first time:
+# chmod 754 aDNAPrePro-Step1.sh
 ##
 # Requirements: 
 # 	Input *fastq.gz files
 #       Parameters -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC <AdapterSequence> -m 30 <MinimumReadLength> 
-#	Output: trimmed *fastq.gz files and *.log files
+#	Output: trimmed *.fastq files and *.log files
 
 # Note: ${filename:9:6} extracts the sample identifier from the full file path.
 # It removes the first 9 char (e.g. "./Step1d/") and then reads the next 6 char.
@@ -36,17 +36,23 @@ echo "Start: $(date '+%H:%M')"
 # $HOME is always the /path/to/your/homedirectory/
 WorkDir="$HOME/aDNAPrePro"
 # ScratchDir="/path/to/your/scratchdirectory/"
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
+ScratchDir=""
+
+if [[ -z "$ScratchDir" ]]; then
+    echo 'ScratchDir="" is not defined. Please insert your path in Step1.sh'
+    exit 1
+fi
 
 #Cutadaptlogs: the directory hosting cutadapt log files: Ensure Cutadaptlogs exist
-mkdir -p Cutadaptlogs ## create Cutadaptlogs if it doesn´t exists
+mkdir -p "$WorkDir/Cutadaptlogs" ## create Cutadaptlogs if it doesn´t exist
 
 cd "$ScratchDir"
 
 ## Step0d: the directory hosting your fastq.gz files
-mkdir -p Step0d ## create Step0d if it doesn´t exists
-mkdir -p Step1d ## create Step1d if it doesn´t exists
+mkdir -p "$ScratchDir/Step0d" ## create Step0d if it doesn´t exist
+mkdir -p "$ScratchDir/Step1d" ## create Step1d if it doesn´t exist
 
 # Load cutadapt on your HPC enviorment
 module load cutadapt
@@ -58,7 +64,7 @@ do
   sample="${filename:9:6}"
   base="${filename##*/}"            # remove ./Step0d/
   base="${base%.fastq.gz}"          # remove .fastq.gz extension
-  cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -m 30 "$filename" > "$ScratchDir/Step1d/${base}.fastq" 2> "$TestHOME/Cutadaptlogs/${base}.log"
+  cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -m 30 "$filename" > "$ScratchDir/Step1d/${base}.fastq" 2> "$WorkDir/Cutadaptlogs/${base}.log"
 
   echo "$sample"
 done
