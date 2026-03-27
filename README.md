@@ -29,6 +29,9 @@ The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It 
 
 ## Pipeline workflow:
 
+### aDNAPrePro-Installation.sh
+
+Is your Installation Script and is executed automatically by the wget command above.
 Please make sure that all shell scripts have permissions and are executable. Please launch the scripts in the following order: 
 
 - **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
