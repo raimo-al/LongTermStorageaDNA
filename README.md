@@ -14,16 +14,28 @@ LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
 
 # Installation and pipeline
 
+Please make sure that all shell scripts have permissions and are executable. First please launch from your shell:
+
+```bash
+wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
+```
+
 ## Requirements :
 For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
+
+## Pipeline workflow:
 
 ## aDNAPrePro
 
 The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It contains scripts and customised code developed for the analysis of ancient human genomic data generated  the project **“The effect of long-term storage on ancient DNA samples”** (Master’s thesis).
 
-## Pipeline workflow:
+Please make sure that all shell scripts have permissions and are executable.
 
-Please make sure that all shell scripts have permissions and are executable. Please launch the scripts in the following order: 
+**aDNAPrePro-Installation.sh**
+
+Is your Installation Script and is executed automatically by the wget command above.
+
+**Please launch the scripts in the following order:**
 
 - **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
 
