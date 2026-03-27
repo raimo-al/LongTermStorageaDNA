@@ -23,7 +23,7 @@ The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It 
 
 ## Pipeline workflow:
 
-Please make sure that all bash scripts have permissions and are executable. Please launch the scripts in the following order: 
+Please make sure that all shell scripts have permissions and are executable. Please launch the scripts in the following order: 
 
 **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
 Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
