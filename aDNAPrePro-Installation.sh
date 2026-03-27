@@ -141,4 +141,11 @@ echo "cd $WorkDir/Scripts"
 echo "./Step1.sh"
 echo ""
 
+# Removing installation script.
+
+if [ -f "$0" ]; then                        ## $0 = the script currently running
+    rm -- "$0"
+    echo "Installation script removed."
+fi
+
 echo "End: $(date '+%H:%M')"
