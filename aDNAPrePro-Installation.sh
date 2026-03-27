@@ -143,9 +143,9 @@ echo ""
 
 # Removing installation script.
 
-if [ -f "$0" ]; then                        ## $0 = the script currently running
-    rm -- "$0"
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+if [ -f "$SCRIPT_PATH" ]; then
+    rm -- "$SCRIPT_PATH"
     echo "Installation script removed."
 fi
-
 echo "End: $(date '+%H:%M')"
