@@ -25,13 +25,17 @@ The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It 
 
 Please make sure that all shell scripts have permissions and are executable. Please launch the scripts in the following order: 
 
-**Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
+- **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
+
 Cutadapt: https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200
 
-**Step2.sh**: Step 2 consists of aligning your samples to the reference genome with bwa
+- **Step2.sh**: Step 2 consists of aligning your samples to the reference genome with bwa
+
 bwa: (https://github.com/lh3/bwa; arXiv:1303.3997)
 
-**Step31.sh - Step34.sh**: All Step31.sh, Step32.sh, Step31.sh and Step34.sh use SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
+- **Step31.sh - Step34.sh**: All Step31.sh, Step32.sh, Step31.sh and Step34.sh use SAMtools.
+
+SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 
 **Step31.sh**: Step31 consists of converting *.sam to *.bam (binary) files with the program SAMtools and keep only reads with mapping quality (MAPQ) = 30
 
@@ -41,7 +45,7 @@ bwa: (https://github.com/lh3/bwa; arXiv:1303.3997)
 
 **Step34.sh**: Step34 consists of generating summary statistics using samtools flagstat
 
-**Step4CreateReport.sh** creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+- **Step4CreateReport.sh** creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
 
 # Additional references include:
 
