@@ -5,7 +5,7 @@ This pipeline contains a set of scripts and customized code, which were original
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 # Pipeline workflow:
-The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.0) preprocesses human aDNA samples.
+The first part of the pipeline, **aDNAPrePro** (**v1.1**), is now available. The pipeline aDNAPrePro (V1.1) preprocesses human aDNA samples.
 
 # aDNAPrePro
 ## Installation and pipeline
