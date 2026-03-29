@@ -22,4 +22,4 @@ Give 1–2 short examples.
 Add how people should cite / reference this repository.
 
 ## Contact
-Your name + link/email (optional).
+Alexandra Raimo  alexandra.raimo@protonmail.com
