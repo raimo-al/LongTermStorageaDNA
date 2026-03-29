@@ -27,7 +27,7 @@ Please also make sure that all shell scripts have permissions and are executable
 
 ## `aDNAPrePro-Installation.sh`:
 
-This is the installation script and is executed automatically by the wget command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
+This is the installation script and is executed automatically by the `wget` command above. If you use this command, all shell scripts will automatically receive the correct permissions and be made executable.
 
 ## `aDNAPrePro core pipeline scripts` :
 
