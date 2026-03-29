@@ -5,12 +5,6 @@ This pipeline contains a set of scripts and customized code, which were original
 
 Thesis available here: https://utheses.univie.ac.at/detail/74668
 
-## Citation
-
-**Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.**
-
-LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
-
 
 # Installation and pipeline
 
@@ -57,7 +51,14 @@ SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascie
 
 **Step34.sh**: Step34 consists of generating summary statistics using samtools flagstat
 
-- **Step4CreateReport.sh** creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+- **Step4CreateReport.sh**: creates a report (txt file) summarising the total, trimmed, unique/aligned and/or endogenous reads of all your samples.
+
+# Citation:
+
+**Please cite https://utheses.univie.ac.at/detail/74668 if you use this pipeline.**
+
+LongTermStorageaDNA-Scripts is available under the terms of the MIT license.
+The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 
 # Additional references include:
 
