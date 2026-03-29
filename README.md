@@ -21,11 +21,11 @@ For the pipeline to need to download your preferred reference genome in the dire
 
 Please make sure that all shell scripts have permissions and are executable.
 
-**aDNAPrePro-Installation.sh**
+## **aDNAPrePro-Installation.sh** :
 
 Is your Installation Script and is executed automatically by the wget command above.
 
-**Please launch the scripts in the following order:**
+## **aDNAPrePro remaining scripts** :
 
 ## Important Note:
 In each script you need to insert the path of your Scratch directory ($ScratchDir) . If you installed the Pipeline with the aDNAPrePro-Installation.sh please use the same path as you typed in the installation script. 
@@ -33,6 +33,8 @@ In each script you need to insert the path of your Scratch directory ($ScratchDi
 ```text
 ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
 ```
+
+**Please launch the scripts in the following order:**
 
 - **Step1.sh**: Step 1 consists of Adapter trimming with Cutadapt
 
