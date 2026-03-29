@@ -10,25 +10,34 @@ The first part of the pipeline, **aDNAPrePro** (**v1.0**), is now available. It 
 # aDNAPrePro
 ## Installation and pipeline
 
-Please make sure that all shell scripts have permissions and are executable. First please launch from your shell:
+Please make sure that all shell scripts have permissions and are executable.
+
+First, run the following command in your shell:
 
 ```bash
 wget -O aDNAPrePro-Installation.sh https://raw.githubusercontent.com/raimo-al/LongTermStorageaDNA/main/aDNAPrePro-Installation.sh && bash aDNAPrePro-Installation.sh
 ```
 
 ## Requirements :
-For the pipeline to need to download your preferred reference genome in the directory "$ScratchDir" (ScratchDir="/path/to/your/scratchdirectory/").
+Before running the pipeline, please download your preferred reference genome into your scratch directory:
 
-Please make sure that all shell scripts have permissions and are executable.
+```bash
+ScratchDir="/path/to/your/scratchdirectory/"
+``
 
-## **aDNAPrePro-Installation.sh** :
+Please also make sure that all shell scripts have permissions and are executable.
 
-Is your Installation Script and is executed automatically by the wget command above.
+## `aDNAPrePro-Installation.sh`:
+
+This is the installation script and is executed automatically by the wget command above.
 
 ## **aDNAPrePro remaining scripts** :
 
 ## Important Note:
-In each script you need to insert the path of your Scratch directory ($ScratchDir) . If you installed the Pipeline with the aDNAPrePro-Installation.sh please use the same path as you typed in the installation script. 
+
+In each script, you need to insert the path to your scratch directory (`$ScratchDir`). If you installed the pipeline using `aDNAPrePro-Installation.sh`, please use the same path that you entered in the installation script.
+
+Example message:
 
 ```text
 ref="" is not defined. Please insert your path in aDNAPrePro-Step*.sh
