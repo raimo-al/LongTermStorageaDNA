@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
+set -e
+
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step32.sh this is the sixth of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Step32.sh this is the fifth of eight scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-## Step32 sorts the "*.bam" files into *"_sorted.bam" files
+## aDNAPrePro-Step32 sorts the "*.bam" files into *"_sorted.bam" files
 # By using the Software Samtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 # Usage:
-# First time launching:
-# chmod 754 Step32.sh
+# If you did not download the scripts using wget, first make the script executable:
+# chmod 754 aDNAPrePro-Step32.sh
 
 # Requirements: 
 # 	Input:*q30.bam
@@ -32,9 +34,18 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
+WorkDir="$HOME/aDNAPrePro"
+
 #ScratchDir="/path/to/your/scratchdirectory/"
-TestHOME="$HOME/TestGithub"
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+
+ScratchDir=""
+
+#Check for path in "$ScratchDir"
+if [[ -z "$ScratchDir" ]]; then
+    echo 'ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step32.sh'
+    exit 1
+fi
 
 # Load SAMtools on your cluster environment
 module load SAMtools/1.23-GCC-14.2.0
@@ -47,7 +58,7 @@ for filename in ./Step3d/*q30.bam; do
     base="${base%.bam}"           # remove .bam extension
 
     samtools sort "$filename" -m 4G -@ 8 -o "$ScratchDir/Step3d/${base}_sorted.bam"
-    echo "$(date '+%H:%M') Finished converting *q30.bam to *q30_sorted.bam for sample ${sample}"
+    echo "$(date '+%H:%M') Finished sorting *q30.bam to *q30_sorted.bam for sample ${sample}"
 done
 
 echo "End:   $(date '+%H:%M')"

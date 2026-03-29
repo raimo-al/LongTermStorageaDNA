@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
+set -e
+
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step1.sh this is the third of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Step1.sh this is the second of eight scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-# Step 1: Adapter trimming with Cutadapt
+# aDNAPrePro-Step 1: Adapter trimming with Cutadapt
 # Software Cutadapt (https://github.com/marcelm/cutadapt; DOI:10.14806/ej.17.1.200) 
 ##
 # Usage: 
 ##
-# If you did not download the scripts with wget, you need to make the script executable by launching the first time:
+# If you did not download the scripts using wget, first make the script executable:
 # chmod 754 aDNAPrePro-Step1.sh
 ##
 # Requirements: 
@@ -35,13 +37,13 @@ echo "Start: $(date '+%H:%M')"
 
 # $HOME is always the /path/to/your/homedirectory/
 WorkDir="$HOME/aDNAPrePro"
-# ScratchDir="/path/to/your/scratchdirectory/"
-#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+# ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
 
 ScratchDir=""
 
+#Check for path in "$ScratchDir"
 if [[ -z "$ScratchDir" ]]; then
-    echo 'ScratchDir="" is not defined. Please insert your path in Step1.sh'
+    echo 'ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step1.sh'
     exit 1
 fi
 

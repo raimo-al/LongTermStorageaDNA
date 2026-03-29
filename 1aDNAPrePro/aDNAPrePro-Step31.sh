@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
+set -e
+
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step31.sh this is the fifth of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Step31.sh this is the fourth of eight scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-## Step31: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
+## aDNAPrePro-Step31: Convert *.sam to *.bam (binary) files with the program samtools and keep only reads with mapping quality (MAPQ) = 30
 ##
 # Usage:
-# First time using the script
-# chmod 754 Step31.sh
+# If you did not download the scripts using wget, first make the script executable:
+# chmod 754 aDNAPrePro-Step31.sh
 
 # Requirements: 
 # 	Input: *.sam
@@ -32,9 +34,18 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
+WorkDir="$HOME/aDNAPrePro"
+
 #ScratchDir="/path/to/your/scratchdirectory/"
-TestHOME="$HOME/TestGithub"
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+
+ScratchDir=""
+
+#Check for path in "$ScratchDir"
+if [[ -z "$ScratchDir" ]]; then
+    echo 'ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step31.sh'
+    exit 1
+fi
 
 # Load SAMtools on your HPC enviorment; this is how to load SAMtools on the LiSC Server
 # check if your SAMtools system current version is correct.
@@ -43,7 +54,7 @@ module load SAMtools/1.23-GCC-14.2.0
 cd "$ScratchDir"
 
 ##Step3d: the output directory hosting your *.bam files
-mkdir -p Step3d ## create Step3d if it doesn´t exists
+mkdir -p "$ScratchDir/Step3d" ## create Step3d if it doesn´t exist
 
 for filename in ./Step2d/*.sam; do
    sample="${filename:9:6}"

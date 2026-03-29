@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
+set -e
+
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step34.sh this is the eigth of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Step34.sh this is the seventh of eight scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-## Step34: Generates summary statistics using samtools flagstat
+## aDNAPrePro-Step34: Generates summary statistics using samtools flagstat
 # Software SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 ##
 # Usage:
-# First time using the script
-# chmod 754 Step34.sh
+# If you did not download the scripts using wget, first make the script executable:
+# chmod 754 aDNAPrePro-Step34.sh
 
 # Requirements: 
 # 	Input: sorted_rmdup.bam
@@ -33,21 +35,30 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
+WorkDir="$HOME/aDNAPrePro"
+
 #ScratchDir="/path/to/your/scratchdirectory/"
-TestHOME="$HOME/TestGithub"
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+
+ScratchDir=""
+
+#Check for path in "$ScratchDir"
+if [[ -z "$ScratchDir" ]]; then
+    echo 'ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step34.sh'
+    exit 1
+fi
 
 # Load SAMtools on your cluster enviorment
 module load SAMtools/1.23-GCC-14.2.0
 
 ##Summaries: the directory hosting your Summary results
-mkdir -p "$TestHOME/Summaries"  ## create Summaries if it doesn´t exists
+mkdir -p "$WorkDir/Summaries"  ## create Summaries if it doesn´t exist
 
 cd "$ScratchDir"
 
 for filename in ./Step3d/*sorted_rmdup.bam;
 do 
-    samtools flagstat -O tsv "${filename}" > $TestHOME/Summaries/"${filename:9:6}"_tsvsummary.txt; #summary files colums are: QC_passed    QC_failed    Metric
+    samtools flagstat -O tsv "${filename}" > $WorkDir/Summaries/"${filename:9:6}"_tsvsummary.txt; #summary files colums are: QC_passed    QC_failed    Metric
 
     echo ${filename:9:6}
 done

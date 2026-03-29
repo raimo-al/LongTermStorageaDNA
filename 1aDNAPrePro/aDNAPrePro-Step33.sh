@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
+set -e
+
 # ------------------------------------------------------------
 # Contact: alexandra.raimo@protonmail.com
 # Project name: aDNAPrePro
 # Version: 1.1
 # Date: Mar 2026
-# Step33.sh this is the seventh of nine scripts to preprocess ancient DNA samples.
+# aDNAPrePro-Step33.sh this is the sixth of eight scripts to preprocess ancient DNA samples.
 #
 ## The computational results of this work have been achieved using the University of Vienna`s Life Science Compute Cluster (LiSC).
 ## This script has been written to work on the LiSC cluster. Using this Pipeline in a different environment, you would possibly need to install some programs. 
 
-# Step33 sorts the *"_sorted.bam" files into *"_rmdup.bam" files
+# aDNAPrePro-Step33: sorts the *"_sorted.bam" files into *"_rmdup.bam" files
 # Software SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 ##
 # Usage:
-# First time using the script
-# chmod 754 Step33.sh
+# If you did not download the scripts using wget, first make the script executable:
+# chmod 754 aDNAPrePro-Step33.sh
 
 # Requirements: 
 # 	Input:       *_sorted.bam
@@ -33,11 +35,20 @@
 echo "Start: $(date '+%H:%M')"
 
 #$HOME is always the /path/to/your/homedirectory/
-#ScratchDir="/path/to/your/scratchdirectory/"
-TestHOME="$HOME/TestGithub"
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+WorkDir="$HOME/aDNAPrePro"
 
-# Load SAMtools on your cluster enviorment
+#ScratchDir="/path/to/your/scratchdirectory/"
+#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+
+ScratchDir=""
+
+#Check for path in "$ScratchDir"
+if [[ -z "$ScratchDir" ]]; then
+    echo 'ScratchDir="" is not defined. Please insert your path in aDNAPrePro-Step33.sh'
+    exit 1
+fi
+
+# Load SAMtools on your cluster environment
 module load SAMtools/1.23-GCC-14.2.0
 
 cd "$ScratchDir"
@@ -48,7 +59,7 @@ for filename in ./Step3d/*q30_sorted.bam; do
     base="${base%.bam}"                    # remove .bam extension
 
     samtools rmdup -s "$filename" "$ScratchDir/Step3d/${base}_rmdup.bam" 
-    echo "$sample"
+    echo "Finished removing duplicates from *_q30_sorted.bam for sample $sample"
 done
 
 # Index all rmdup BAM files in Step3d
