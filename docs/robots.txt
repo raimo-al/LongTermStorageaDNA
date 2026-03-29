@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://raimo-al.github.io/LongTermStorageaDNA/sitemap.xml
