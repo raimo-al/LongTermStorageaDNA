@@ -37,8 +37,7 @@ echo "Start: $(date '+%H:%M')"
 #$HOME is always the /path/to/your/homedirectory/
 WorkDir="$HOME/aDNAPrePro"
 
-#ScratchDir="/path/to/your/scratchdirectory/"
-#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path 
 
 ScratchDir=""
 

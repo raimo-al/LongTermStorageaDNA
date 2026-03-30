@@ -39,7 +39,6 @@ echo "Start: $(date '+%H:%M')"
 WorkDir="$HOME/aDNAPrePro"
 
 #Set the path for your reference genome: ref="/path/to/your/ReferenceGenome.fasta" ; in this script following Reference Genome was used: hg37: human_g1k_v37.fasta
-#ref="/lisc/data/scratch/anthropology/Pinhasi_group/raimo/human_g1k_v37.fasta"
 ref=""
 
 #Check for path in "$ref"
@@ -55,8 +54,7 @@ if [[ ! -f "$ref" ]]; then
     exit 1
 fi
 
-#ScratchDir="/path/to/your/scratchdirectory/"
-#ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"  # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path
+#ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path  
 
 ScratchDir=""
 
