@@ -156,6 +156,24 @@ mapDamage (https://doi.org/10.1093/bioinformatics/btt193 ; https://doi.org/10.10
 
 SAMtools (https://github.com/samtools/samtools; https://doi.org/10.1093/gigascience/giab008)
 
+**Usage:**
+
+RunDeam.sh can be executed with or without command-line options; default:
+```bash
+./RunDeam.sh
+```
+
+Alternatively, RunDeam.sh can be run with these options:
+```bash
+./RunDeam.sh -st
+```
+
+```bash
+RunDeam.sh -fscb
+```
+- -st     standard or default option: Runs the standard main analysis with mapDamage (without additional filtering).
+- -fscb   fscb = (additional) filtering for soft-clipped bases: performs an extra filtering step to further reduce the extent of soft-clipped bases.
+
 ## Requirements :
 Before running the pipeline, please download your preferred **reference genome** into your scratch directory:
 
