@@ -8,8 +8,8 @@ set -euo pipefail
 # Date: Apr 2026
 ##
 # module: RunDeam
-# Version: 1.0
-# Date: May 2026
+# Version: 1.1
+# Date: June 2026
 
 # RunDeam.sh: This is the second of two script specifically developed for the "The effect of long-term storage on ancient DNA samples" project (unpublished).
 # RunDeam.sh assesses terminal deamination patterns in ancient DNA samples with the programs
@@ -32,6 +32,17 @@ set -euo pipefail
 ##
 # If you did not download the scripts using wget, first make the script executable:
 # chmod 754 RunDeam.sh
+# 
+# RunDeam.sh can be executed with or without command-line options.
+# Default:
+# ./RunDeam.sh
+# 
+# Optionally RunDeam.sh can be run with these options:
+# ./RunDeam.sh -st
+# ./RunDeam.sh -fscb
+#
+#   -st     standard or default option: Runs the standard main analysis with mapDamage (without additional filtering).
+#   -fscb   fscb = (additional) filtering for soft-clipped bases: performs an extra filtering step to further reduce the extent of soft-clipped bases.
 ##
 # Requirements: 
 # 	Input:
@@ -43,6 +54,40 @@ set -euo pipefail
 # ------------------------------------------------------------
 
 echo "Start: $(date '+%H:%M')"
+
+# Parse command-line arguments
+
+Mode="standard"
+
+if [[ $# -gt 1 ]]; then
+    echo "Error: Too many arguments."
+    echo "Usage:"
+    echo "./RunDeam.sh"
+    echo "./RunDeam.sh -st"
+    echo "./RunDeam.sh -fscb"
+    exit 1
+fi
+
+if [[ $# -eq 1 ]]; then
+    case "$1" in
+        -st)
+            Mode="standard"
+            ;;
+        -fscb)
+            Mode="fscb"
+            ;;
+        *)
+            echo "Error: Unknown option $1"
+            echo "Usage:"
+            echo "./RunDeam.sh"
+            echo "./RunDeam.sh -st"
+            echo "./RunDeam.sh -fscb"
+            exit 1
+            ;;
+    esac
+fi
+
+echo "Analysis mode: $Mode"
 
 # Load all needed modules
 module load mapDamage/2.2.3-foss-2022a
@@ -92,7 +137,7 @@ else
 
 # Customising path manually if RunDeam-Installation.sh was not used for module installation.
 #ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path 
-ScratchDir=""
+ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"
 
 #Check for path in "$ScratchDir"
 if [[ -z "$ScratchDir" ]]; then
@@ -101,7 +146,7 @@ if [[ -z "$ScratchDir" ]]; then
 fi
 
 #Set the path for your reference genome: ref="/path/to/your/ReferenceGenome.fasta" ; in this script following Reference Genome was used: hg37: human_g1k_v37.fasta
-ref=""
+ref="/lisc/data/scratch/anthropology/Pinhasi_group/raimo/hg19/hg19.fa"
 
 #Check for path in "$ref"
 if [[ -z "$ref" ]]; then
@@ -191,7 +236,16 @@ for bam_file in *_sorted_rmdup.bam; do
 
     mkdir -p "$SampleOutput"
 
-    # Create filtered BAM for mapDamage (to remove soft clipped bases)
+    # Skip sample if already processed
+    if [[ -f "$SampleOutput/5pCtoT_freq.txt" ]]; then
+       echo "$sample has been processed already; therefore this sample was skipped this time."
+       continue
+    fi
+
+if [[ "$Mode" == "fscb" ]]; then
+
+    echo "Running mapDamage with additional filtering to reduce soft-clipped bases."
+
     FilteredBam="$SampleOutput/${sample}_mapped.bam"
 
     samtools view \
@@ -201,15 +255,23 @@ for bam_file in *_sorted_rmdup.bam; do
         "$InputBam/$bam_file" \
         > "$FilteredBam"
 
-    # Index filtered BAM
     samtools index "$FilteredBam"
 
-    # Run mapDamage on filtered BAM
     mapDamage \
         -i "$FilteredBam" \
         -r "$ref" \
         -d "$SampleOutput"
 
+else
+
+    echo "Running standard mapDamage analysis."
+
+    mapDamage \
+        -i "$InputBam/$bam_file" \
+        -r "$ref" \
+        -d "$SampleOutput"
+
+fi
     # Check output
     if [[ -f "$SampleOutput/5pCtoT_freq.txt" ]]; then
         echo "Success: mapDamage completed for $sample"
