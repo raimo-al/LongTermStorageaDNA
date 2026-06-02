@@ -157,6 +157,6 @@ EOF
 echo ""
 echo "Once you want to run the pipeline, next steps: cd $WorkDir/Scripts"
 echo ""
-echo "Final steps: 1.) Please place your *.bam and index *.bai files in $AllBamDir and 2.) referred reference genome (*.fa) in $RefDir"
+echo "Final steps: 1.) Please place your *.bam and index *.bai files in $AllBamDir and 2.) Preferred reference genome (*.fa) in $RefDir"
 echo ""
 echo "End: $(date '+%H:%M')"
