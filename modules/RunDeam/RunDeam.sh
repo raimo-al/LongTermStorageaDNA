@@ -137,7 +137,6 @@ else
 
 # Customising path manually if RunDeam-Installation.sh was not used for module installation.
 #ScratchDir="/path/to/your/scratchdirectory/" # assuming there is a Scratch Directory in an ad hoc Filesystem: adapt to your individual path 
-ScratchDir="/lisc/data/scratch/anthropology/Pinhasi_group/raimo"
 
 #Check for path in "$ScratchDir"
 if [[ -z "$ScratchDir" ]]; then
@@ -146,7 +145,6 @@ if [[ -z "$ScratchDir" ]]; then
 fi
 
 #Set the path for your reference genome: ref="/path/to/your/ReferenceGenome.fasta" ; in this script following Reference Genome was used: hg37: human_g1k_v37.fasta
-ref="/lisc/data/scratch/anthropology/Pinhasi_group/raimo/hg19/hg19.fa"
 
 #Check for path in "$ref"
 if [[ -z "$ref" ]]; then
